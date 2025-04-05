@@ -36,6 +36,12 @@ makemigrations:
 migrate:
 	python src/manage.py migrate
 
+flush:
+	python src/manage.py flush
+
+drop:
+	python src/manage.py migrate $(app) zero
+
 createsuperuser:
 	python src/manage.py createsuperuser
 

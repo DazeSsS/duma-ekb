@@ -8,6 +8,20 @@ from apps.meetings.data.models import Meeting, Question, Tag
 
 class QuestionInline(admin.StackedInline):
     model = Question
+    fields = [
+        'number',
+        'description',
+        'quorum',
+        'position_1870',
+        'position_1892',
+        'author_classification',
+        'solution',
+        'solution_content',
+        'tags',
+        'case_number',
+        'sheet_numbers',
+    ]
+    autocomplete_fields = ['tags']
     extra = 1
 
     def get_extra(self, request, obj=None, **kwargs):
@@ -26,6 +40,13 @@ class QuestionInline(admin.StackedInline):
 class MeetingAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'protocol_number', 'meeting_type', 'deputies', 'presiding']
     inlines = [QuestionInline]
+    fields = [
+        'date',
+        'protocol_number',
+        'meeting_type',
+        'deputies',
+        'presiding',
+    ]
 
     formfield_overrides = {
         models.DateField: {'widget': DatePickerInput(
@@ -45,5 +66,5 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ['title']
 
