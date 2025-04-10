@@ -11,6 +11,28 @@ services:
       - duma_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  app:
+    container_name: app
+    image: duma_api:0.1
+    build: .
+    restart: always
+    command: >
+      sh -c "python src/manage.py migrate &&
+      python src/manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./src/apps/meetings/migrations:/app/src/apps/meetings/migrations
+    env_file:
+      - ./.env
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   duma_data:

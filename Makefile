@@ -27,26 +27,17 @@ push:
 prune:
 	docker system prune
 
-runserver:
-	python src/manage.py runserver
+db:
+	docker compose up -d db
 
 makemigrations:
-	python src/manage.py makemigrations
-
-migrate:
-	python src/manage.py migrate
-
-flush:
-	python src/manage.py flush
-
-drop:
-	python src/manage.py migrate $(app) zero
+	docker compose run --build --rm app python3 src/manage.py makemigrations
 
 createsuperuser:
-	python src/manage.py createsuperuser
+	docker compose exec app python src/manage.py createsuperuser
 
-collectstatic:
-	python src/manage.py collectstatic --no-input
+flush:
+	docker compose run --build --rm app python3 src/manage.py flush
 
-shell:
-	python src/manage.py shell
+drop:
+	docker compose run --build --rm app python3 src/manage.py migrate $(app) zero
