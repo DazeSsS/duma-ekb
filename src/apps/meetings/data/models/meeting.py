@@ -1,5 +1,5 @@
 from django.db import models
-from apps.meetings.domain.enums import MeetingType, Month
+from apps.meetings.domain.enums import MeetingType
 
 
 class Meeting(models.Model):

@@ -24,21 +24,6 @@ class MeetingType(models.TextChoices):
     ONGOING = 'ongoing', 'Продолженное'
 
 
-class Month(models.TextChoices):
-    JANUARY = 'january', 'Январь'
-    FEBRUARY = 'february', 'Февраль'
-    MARCH = 'march', 'Март'
-    APRIL = 'april', 'Апрель'
-    MAY = 'may', 'Май'
-    JUNE = 'june', 'Июнь'
-    JULY = 'july', 'Июль'
-    AUGUST = 'august', 'Август'
-    SEPTEMBER = 'september', 'Сентябрь'
-    OCTOBER = 'october', 'Октябрь'
-    NOVEMBER = 'november', 'Ноябрь'
-    DECEMBER = 'december', 'Декабрь'
-
-
 class Position1870(models.TextChoices):
     A = 'А)', 'Дела по устройству и управления городским хозяйством; дела по устройству и управления городским хозяйством.'
     B = 'Б)', 'Дела по внешнему благоустройству города: водопровод, предосторожности против пожаров, предупреждения скотских падежей, охрана порядка в общественных местах.'

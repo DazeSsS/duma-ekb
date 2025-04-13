@@ -9,7 +9,7 @@ from apps.meetings.domain.enums import (
 
 
 class Question(models.Model):
-    meeting = models.ForeignKey('Meeting', on_delete=models.CASCADE, verbose_name='Заседание')
+    meeting = models.ForeignKey('Meeting', on_delete=models.CASCADE, related_name='questions', verbose_name='Заседание')
     number = models.CharField(max_length=8, verbose_name='№ вопроса', blank=True)
     description = models.TextField(max_length=1024, verbose_name='Решаемый вопрос')
     quorum = models.BooleanField(verbose_name='Кворум')
