@@ -25,6 +25,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = 'вопрос'
         verbose_name_plural = 'Вопросы'
+        ordering = ['number']
 
     def __str__(self):
         return f'{self.number} {self.description}'

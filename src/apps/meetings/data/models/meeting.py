@@ -12,6 +12,7 @@ class Meeting(models.Model):
     class Meta:
         verbose_name = 'заседание'
         verbose_name_plural = 'Заседания'
+        ordering = ['date']
 
     def __str__(self):
         return f'{self.get_meeting_type_display()} заседание ({self.date})'

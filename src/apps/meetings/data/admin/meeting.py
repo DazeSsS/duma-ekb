@@ -18,6 +18,7 @@ class MeetingAdmin(admin.ModelAdmin):
         'deputies',
         'presiding',
     ]
+    ordering = ['-date']
 
     formfield_overrides = {
         models.DateField: {'widget': DatePickerInput(
