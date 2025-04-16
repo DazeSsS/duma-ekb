@@ -1,11 +1,6 @@
 from django.urls import path
-from ninja import NinjaAPI
-
-from apps.meetings.api import meeting_router
-
-api = NinjaAPI()
-api.add_router('/meetings', meeting_router)
+from apps.meetings.ninja_app import ninja_api
 
 urlpatterns = [
-    path('', api.urls),
+    path('', ninja_api.urls),
 ]

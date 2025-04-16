@@ -37,6 +37,7 @@ CORS_ALLOWED_ORIGINS = [
     if origin.strip()
 ]
 
+APPEND_SLASH = True
 
 # Application definition
 
