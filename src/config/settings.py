@@ -32,7 +32,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CORS_ALLOWED_ORIGINS = [
-    origin for origin in os.getenv('TRUSTED_ORIGINS').split(',')
+    origin.strip()
+    for origin in os.getenv('TRUSTED_ORIGINS').split(',')
+    if origin.strip()
 ]
 
 

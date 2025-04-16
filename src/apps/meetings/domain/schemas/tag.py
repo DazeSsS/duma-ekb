@@ -1,6 +1,6 @@
-from ninja import Schema
+from apps.meetings.domain.schemas.base import BaseSchema
 
 
-class TagResponse(Schema):
+class TagResponse(BaseSchema):
     id: int
     title: str

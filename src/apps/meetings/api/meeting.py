@@ -6,6 +6,7 @@ from apps.meetings.domain.schemas import MeetingResponse
 
 router = Router(
     tags=['Meetings'],
+    by_alias=True,
 )
 
 @router.get('/', response={200: list[MeetingResponse]})
