@@ -9,7 +9,7 @@ def get_api():
 
     set_exceptions(api)
 
-    api.add_router('/meetings', meeting_router)
+    api.add_router('meetings', meeting_router)
 
     return api
 
