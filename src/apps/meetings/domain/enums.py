@@ -1,7 +1,16 @@
 from django.db import models
 
 
-class AuthorClassification(models.TextChoices):
+class BaseTextChoices(models.TextChoices):
+    @classmethod
+    def get_value_by_label(cls, label):
+        for choice in cls.choices:
+            if choice[1].lower() == label.lower():
+                return choice[0]
+        raise ValueError(f"Нет соответствующего value для label: {label}")
+
+
+class AuthorClassification(BaseTextChoices):
     FINANCE = 'finance', 'Финансы'
     FOOD = 'food', 'Продовольствие'
     IMPROVEMENT = 'improvement', 'Благоустройство'
@@ -17,14 +26,14 @@ class AuthorClassification(models.TextChoices):
     LEGAL = 'legal', 'Юридический'
 
 
-class MeetingType(models.TextChoices):
+class MeetingType(BaseTextChoices):
     REGULAR = 'regular', 'Очередное'
     EMERGENCY = 'emergency', 'Чрезвычайное'
     EXTRA = 'extra', 'Экстренное'
     ONGOING = 'ongoing', 'Продолженное'
 
 
-class Position1870(models.TextChoices):
+class Position1870(BaseTextChoices):
     A = 'А)', 'Дела по устройству и управления городским хозяйством; дела по устройству и управления городским хозяйством.'
     B = 'Б)', 'Дела по внешнему благоустройству города: водопровод, предосторожности против пожаров, предупреждения скотских падежей, охрана порядка в общественных местах.'
     C = 'В)', 'Продовольствие, торговля, здравоохранение, меры предосторожности против пожаров промышленность, устройство пристаней, бирж и кредитных учреждений.'
@@ -49,7 +58,7 @@ class Position1892(models.TextChoices):
     XIII = 'XIII', 'Дела, предоставленные ведению общественного управления на основании особых законоположений и Уставов.'
 
 
-class Solution(models.TextChoices):
+class Solution(BaseTextChoices):
     AGREE = 'agree', 'Согласны'
     PUT_OFF = 'put_off', 'Отложить'
     REFUSE = 'refuse', 'Отказать'

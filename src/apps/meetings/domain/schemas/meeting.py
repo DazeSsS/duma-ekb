@@ -10,7 +10,6 @@ from apps.meetings.domain.enums import MeetingType
 class MeetingResponse(BaseSchema):
     id: int
     date: date
-    protocol_number: str
     meeting_type: Literal[*MeetingType.values]
     deputies: int
     presiding: str

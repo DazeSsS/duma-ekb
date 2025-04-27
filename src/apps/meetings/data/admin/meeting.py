@@ -9,11 +9,10 @@ from apps.meetings.data.admin.question import QuestionInline
 
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'protocol_number', 'meeting_type', 'deputies', 'presiding']
+    list_display = ['__str__', 'meeting_type', 'deputies', 'presiding']
     inlines = [QuestionInline]
     fields = [
         'date',
-        'protocol_number',
         'meeting_type',
         'deputies',
         'presiding',

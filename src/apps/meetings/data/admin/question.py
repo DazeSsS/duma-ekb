@@ -10,6 +10,7 @@ class QuestionInline(admin.StackedInline):
     fieldsets = (
         (None, {
             'fields': (
+                'protocol_number',
                 'number',
                 'description',
                 'quorum',
@@ -48,6 +49,7 @@ class QuestionAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'protocol_number',
                 'number',
                 'description',
                 'quorum',

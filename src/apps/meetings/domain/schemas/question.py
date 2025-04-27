@@ -13,13 +13,14 @@ from apps.meetings.domain.enums import (
 class QuestionResponse(BaseSchema):
     id: int
     meeting_id: int
+    protocol_number: str
     number: str
     description: str
     quorum: bool
-    position_1870: Literal[*Position1870.values]
-    position_1892: Literal[*Position1892.values]
-    author_classification: Literal[*AuthorClassification.values]
-    solution: Literal[*Solution.values]
+    position_1870: Literal[*Position1870.values, '']
+    position_1892: Literal[*Position1892.values, '']
+    author_classification: Literal[*AuthorClassification.values, '']
+    solution: Literal[*Solution.values, '']
     solution_content: str = ''
     case_number: str
     sheet_numbers: list[float]

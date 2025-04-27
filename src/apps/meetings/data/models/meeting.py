@@ -4,7 +4,6 @@ from apps.meetings.domain.enums import MeetingType
 
 class Meeting(models.Model):
     date = models.DateField(verbose_name='Дата заседания')
-    protocol_number = models.CharField(max_length=8, verbose_name='№ протокола')
     meeting_type = models.CharField(max_length=16, choices=MeetingType, verbose_name='Тип заседания')
     deputies = models.IntegerField(verbose_name='Число гласных')
     presiding = models.CharField(max_length=64, verbose_name='Председательствующий')
