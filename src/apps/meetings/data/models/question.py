@@ -29,4 +29,4 @@ class Question(models.Model):
         ordering = ['number']
 
     def __str__(self):
-        return f'{self.number} {self.description}'
+        return f'{self.number}. {self.description}'

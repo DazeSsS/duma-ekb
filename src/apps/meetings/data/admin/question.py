@@ -37,7 +37,7 @@ class QuestionInline(admin.StackedInline):
 
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "position_1870":
-            kwargs["choices"] = [(value, f"{value} {label}") for value, label in db_field.choices]
+            kwargs["choices"] = [(value, f"{value}) {label}") for value, label in db_field.choices]
         elif db_field.name == "position_1892":
             kwargs["choices"] = [(value, f"{value}. {label}") for value, label in db_field.choices]
         return super().formfield_for_choice_field(db_field, request, **kwargs)

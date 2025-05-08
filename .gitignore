@@ -1,5 +1,5 @@
 # Data #
-/data/
+/src/data/
 *.xlsx
 
 # Django #
