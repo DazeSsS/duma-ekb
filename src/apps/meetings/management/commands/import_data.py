@@ -115,9 +115,9 @@ class Command(BaseCommand):
                     for part in sheet_numbers:
                         part = part.strip().replace(' ', '').replace('.', '')
                         if 'об' in part:
-                            num = float(part.replace('об', '.5'))
+                            num = part.replace('об', '.5')
                         else:
-                            num = float(part)
+                            num = part
 
                         sheet_numbers_list.append(num)
 

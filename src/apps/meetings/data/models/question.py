@@ -20,7 +20,7 @@ class Question(models.Model):
     solution = models.CharField(max_length=16, choices=Solution, blank=True, verbose_name='Решение')
     solution_content = models.TextField(max_length=1024, blank=True, verbose_name='Содержание решения')
     case_number = models.CharField(max_length=8, db_index=True, verbose_name='№ дела')
-    sheet_numbers = ArrayField(models.DecimalField(max_digits=5, decimal_places=1), verbose_name='Номера листов')
+    sheet_numbers = ArrayField(models.CharField(max_length=16), verbose_name='Номера листов')
     tags = models.ManyToManyField('Tag', blank=True, verbose_name='Ключевые слова')
 
     class Meta:
