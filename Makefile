@@ -30,9 +30,6 @@ prune:
 db:
 	docker compose up -d db
 
-populate:
-	docker compose run --build --rm app python3 src/manage.py populate_db
-
 import:
 	docker compose run --build --rm app python3 src/manage.py import_data
 

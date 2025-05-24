@@ -14,3 +14,9 @@ class MeetingResponse(BaseSchema):
     deputies: int
     presiding: str
     questions: list[QuestionResponse]
+
+    @staticmethod
+    def resolve_questions(obj):
+        if hasattr(obj, 'filtered_questions'):
+            return obj.filtered_questions
+        return obj.questions
