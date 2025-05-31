@@ -10,9 +10,11 @@ from apps.meetings.domain.enums import MeetingType
 class MeetingResponse(BaseSchema):
     id: int
     date: date
+    protocol_number: str
     meeting_type: Literal[*MeetingType.values]
     deputies: int
     presiding: str
+    case_number: str
     questions: list[QuestionResponse]
 
     @staticmethod

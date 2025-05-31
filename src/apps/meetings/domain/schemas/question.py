@@ -13,7 +13,6 @@ from apps.meetings.domain.enums import (
 class QuestionResponse(BaseSchema):
     id: int
     meeting_id: int
-    protocol_number: str
     number: str
     description: str
     quorum: bool
@@ -22,6 +21,5 @@ class QuestionResponse(BaseSchema):
     author_classification: Literal[*AuthorClassification.values, '']
     solution: Literal[*Solution.values, '']
     solution_content: str = ''
-    case_number: str
     sheet_numbers: list[float]
     tags: list[TagResponse]

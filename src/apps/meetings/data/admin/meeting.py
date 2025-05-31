@@ -9,14 +9,17 @@ from apps.meetings.data.admin.question import QuestionInline
 
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'meeting_type', 'deputies', 'presiding']
+    list_display = ['__str__', 'date', 'deputies', 'presiding', 'source_file']
     inlines = [QuestionInline]
     fields = [
         'date',
+        'protocol_number',
         'meeting_type',
         'deputies',
         'presiding',
+        'case_number',
     ]
+    search_fields  = ['source_file__filename__icontains']
     ordering = ['-date']
 
     formfield_overrides = {

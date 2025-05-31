@@ -10,7 +10,6 @@ class QuestionInline(admin.StackedInline):
     fieldsets = (
         (None, {
             'fields': (
-                'protocol_number',
                 'number',
                 'description',
                 'quorum',
@@ -20,7 +19,6 @@ class QuestionInline(admin.StackedInline):
                 'solution',
                 'solution_content',
                 'tags',
-                'case_number',
                 'sheet_start',
                 'sheet_end',
             )
@@ -49,7 +47,6 @@ class QuestionAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'protocol_number',
                 'number',
                 'description',
                 'quorum',
@@ -59,7 +56,6 @@ class QuestionAdmin(admin.ModelAdmin):
                 'solution',
                 'solution_content',
                 'tags',
-                'case_number',
                 'sheet_start',
                 'sheet_end',
             )
