@@ -4,8 +4,8 @@ from apps.meetings.data.models import Question
 
 
 class QuestionAdminForm(forms.ModelForm):
-    sheet_start = forms.DecimalField(max_digits=5, decimal_places=1, label='Начальный лист', required=True)
-    sheet_end = forms.DecimalField(max_digits=5, decimal_places=1, label='Конечный лист', required=True)
+    sheet_start = forms.CharField(max_length=16, label='Начальный лист', required=True)
+    sheet_end = forms.CharField(max_length=16, label='Конечный лист', required=True)
     
     class Meta:
         model = Question
