@@ -64,7 +64,7 @@ def list_meetings(
         meetings = meetings.filter(date__year=year)
 
     if presiding:
-        meetings = meetings.filter(presiding__contains=presiding)
+        meetings = meetings.filter(presiding__icontains=presiding)
 
     meetings = meetings.prefetch_related(questions_prefetch).filter(
         questions__in=Question.objects.filter(question_filters)
