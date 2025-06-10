@@ -46,7 +46,7 @@ def list_meetings(
 
     questions_prefetch = Prefetch(
         'questions',
-        queryset=Question.objects.filter(question_filters).order_by('number').distinct(),
+        queryset=Question.objects.filter(question_filters).order_by('id').distinct(),
         to_attr='filtered_questions'
     )
 
