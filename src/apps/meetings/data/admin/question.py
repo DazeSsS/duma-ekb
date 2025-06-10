@@ -25,7 +25,7 @@ class QuestionInline(admin.StackedInline):
         }),
     )
     autocomplete_fields = ['tags']
-    ordering = ['number']
+    ordering = ['id']
     extra = 1
 
     def get_extra(self, request, obj=None, **kwargs):
@@ -62,4 +62,4 @@ class QuestionAdmin(admin.ModelAdmin):
         }),
     )
     autocomplete_fields = ['tags']
-    ordering = ['-meeting__date', 'number']
+    ordering = ['-meeting__date', 'id']
