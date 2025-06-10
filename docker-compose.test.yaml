@@ -20,14 +20,12 @@ services:
     build: .
     restart: always
     command: >
-      sh -c "python src/manage.py collectstatic &&
-      python src/manage.py migrate &&
+      sh -c "python src/manage.py migrate &&
       python src/manage.py runserver 0.0.0.0:8000"
     ports:
       - 8000:8000
     volumes:
       - ./src/apps/meetings/migrations:/app/src/apps/meetings/migrations
-      - ${STATIC_ROOT}:/app/src/static
     env_file:
       - ./.env
     depends_on:
