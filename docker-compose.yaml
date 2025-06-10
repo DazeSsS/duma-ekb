@@ -20,7 +20,7 @@ services:
     build: .
     restart: always
     command: >
-      sh -c "python src/manage.py collectstatic &&
+      sh -c "python src/manage.py collectstatic --noinput &&
       python src/manage.py migrate &&
       python src/manage.py runserver 0.0.0.0:8000"
     ports:
