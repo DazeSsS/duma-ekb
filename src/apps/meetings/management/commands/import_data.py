@@ -130,8 +130,8 @@ class Command(BaseCommand):
                     number = row[columns['number']] or ''
                     description = row[columns['description']] or ''
                     quorum = True if row[columns['quorum']].lower() == 'да' else False
-                    position_1870 = row[columns['position_1870']][:1].capitalize() if row[columns['position_1870']] else ''
-                    position_1892 = row[columns['position_1892']] if row[columns['position_1892']] else ''
+                    position_1870 = row[columns['position_1870']][:1].capitalize().strip() if row[columns['position_1870']] else ''
+                    position_1892 = row[columns['position_1892']].strip() if row[columns['position_1892']] else ''
                     author_classification = AuthorClassification.get_value_by_label(row[columns['author_classification']].strip())
                     solution = Solution.get_value_by_label(row[columns['solution']].strip()) if row[columns['solution']] else ''
                     solution_content = row[columns['solution_content']] or ''
