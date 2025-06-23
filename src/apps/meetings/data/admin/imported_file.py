@@ -5,4 +5,4 @@ from apps.meetings.data.models import ImportedFile
 
 @admin.register(ImportedFile)
 class ImportedFileAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ['filename']

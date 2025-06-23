@@ -48,6 +48,13 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+# Site settings
+
+SITE_HEADER = os.getenv('SITE_HEADER', 'Администрирование Django')
+SITE_URL = os.getenv('SITE_URL', '/')
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
