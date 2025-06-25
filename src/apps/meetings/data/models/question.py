@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Length
 from django.contrib.postgres.fields import ArrayField
 from apps.meetings.domain.enums import (
     AuthorClassification,
@@ -24,7 +25,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = 'вопрос'
         verbose_name_plural = 'Вопросы'
-        ordering = ['id']
+        ordering = [Length('number'), 'number']
 
     def __str__(self):
         return f'{self.number}. {self.description}'

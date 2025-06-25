@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models.functions import Length
 
 from apps.meetings.data.models import Question
 from apps.meetings.data.forms import QuestionAdminForm
@@ -25,7 +26,7 @@ class QuestionInline(admin.StackedInline):
         }),
     )
     autocomplete_fields = ['tags']
-    ordering = ['id']
+    ordering = [Length('number'), 'number']
     extra = 1
 
     def get_extra(self, request, obj=None, **kwargs):
