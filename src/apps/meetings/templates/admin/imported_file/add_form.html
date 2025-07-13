@@ -1,0 +1,80 @@
+{% extends 'admin/change_form.html' %}
+
+{% block content_title %}
+  <h1>Импорт заседаний из файлов</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="module">
+    <form id="import-form" class="aligned" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-row">
+        <label for="file-input">Файлы для импорта (.xlsx):</label>
+        <input type="file" name="files" id="file-input" multiple accept=".xlsx" class="vTextField" style="margin-top: 5px;">
+      </div>
+
+      <div class="form-row">
+        <label>Политика импорта:</label>
+        <div class="radiolist" style="margin-top: 10px;">
+          <label class="vCheckboxLabel">
+            <input type="radio" name="action" value="1" checked>
+            Перезаписать существующие файлы
+          </label>
+          <label class="vCheckboxLabel">
+            <input type="radio" name="action" value="2">
+            Импортировать только новые файлы
+          </label>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="button" onclick="startImport()" class="default import-button">Импортировать</button>
+      </div>
+    </form>
+
+    <div class="module">
+      <h3>Логи процесса:</h3>
+      <div id="logs" class="form-row"></div>
+    </div>
+  </div>
+
+  <script>
+    async function startImport() {
+      const form = document.getElementById('import-form');
+      const formData = new FormData(form);
+      const logElement = document.getElementById('logs');
+      const importButton = document.querySelector('.import-button');
+    
+      logElement.innerHTML = '<p>Импорт файлов...</p>';
+      importButton.disabled = true;
+      importButton.textContent = 'Идет импорт...';
+    
+      try {    
+        const uploadResponse = await fetch('/admin/meetings/importedfile/process-import/', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          }
+        });
+    
+        if (!uploadResponse.ok) {
+          throw new Error('Ошибка при загрузке файлов');
+        }
+
+        const responseData = await uploadResponse.json();
+        responseData.forEach((log) => {
+          logElement.innerHTML += `<p style="color: ${log.startsWith('ERROR') ? '#f96671' : '#73fe52'};">${log}</p>`;
+        })
+        logElement.innerHTML += '<p>Импорт завершен.</p>';
+
+        form.reset();
+        importButton.disabled = false;
+        importButton.textContent = 'Импортировать';
+      } catch (error) {
+        logElement.innerHTML += `<p style="color: red;">Ошибка: ${error.message}</p>`;
+      }
+    }
+  </script>
+{% endblock %}

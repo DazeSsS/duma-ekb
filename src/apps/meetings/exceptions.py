@@ -1,0 +1,2 @@
+class InvalidDocumentStructure(Exception):
+    pass

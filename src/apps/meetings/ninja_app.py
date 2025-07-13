@@ -1,7 +1,7 @@
 from ninja import NinjaAPI
 
-from apps.meetings.api.exceptions import set_exceptions
-from apps.meetings.api import meeting_router
+from apps.meetings.api.exception_handlers import set_exceptions
+from apps.meetings.api.routers import meeting_router
 
 
 def get_api():

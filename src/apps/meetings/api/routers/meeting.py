@@ -9,7 +9,7 @@ from ninja import Router, Query
 from apps.meetings.data.models import Meeting, Question
 from apps.meetings.domain.enums import AuthorClassification
 from apps.meetings.domain.schemas import MeetingResponse, PaginatedResponse
-from apps.meetings.api.responses import NotFoundResponse
+from apps.meetings.api.exception_handlers import NotFoundResponse
 
 
 router = Router(
